@@ -5,26 +5,23 @@ let btn = document.querySelector('#submitBtn');
 let emailError = document.querySelector('#emailError');
 let successMsg = document.querySelector('#successMsg');
 
-emailError.hidden = true;
-successMsg.hidden = true;
-
 btn.addEventListener('click', () => {
 
   let email = input.value;
   // validateEmail function takes an email
   if(validateEmail(email)) {
     input.classList.remove('border-red-400');
-    emailError.hidden = true;
-    successMsg.hidden = false;
+    successMsg.classList.remove('hidden')
+    emailError.classList.add('hidden');
     setTimeout(() => {
-      successMsg.hidden = true;
+      successMsg.classList.add('hidden')
     }, [3000])
 
     input.value = '';
   } else {
     alert('Please add a valid email before submitting');
     input.classList.add('border-red-400')
-    emailError.hidden = false;
+    emailError.classList.remove('hidden')
   }
 });
 
